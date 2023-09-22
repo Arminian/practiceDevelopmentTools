@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Example</title>
+</head>
 <body>
+    <h1>User Geolocation Coordinates</h1>
+    <p>Latitude: <span id="latitude"></span></p>
+    <p>Longitude: <span id="longitude"></span></p>
 
-<p>Click the button to get your coordinates.</p>
+    <script>
+        function showPosition(position) {
+            const latitudeElement = document.getElementById("latitude");
+            const longitudeElement = document.getElementById("longitude");
 
-<button onclick="getLocation()">Try It</button>
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
 
-<p id="demo"></p>
+            latitudeElement.textContent = latitude.toFixed(6);
+            longitudeElement.textContent = longitude.toFixed(6);
+        }
 
-<script>
-var x = document.getElementById("demo");
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
-</script>
-
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
 </body>
 </html>
+
