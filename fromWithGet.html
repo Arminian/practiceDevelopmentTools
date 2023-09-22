@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>The form method GET</h1>
+    <!-- method using GET method -->
+    <form action="/action_page.php" method="get">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname"><br><br>
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age"><br><br>
+      <label for="faculty">Faculty:</label>
+      <input type="text" id="faculty" name="faculty"><br><br>
+      <label for="ID">ID of student:</label>
+      <input type="text" id="id" name="id"><br><br>
+      <input type="submit" value="Submit">
+    </form> 
+  
+    <h1>The form method POST</h1>
+    <!-- method without JSON -->
+    <form action="/action_page.php" method="post">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname"><br><br>
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age"><br><br>
+      <label for="faculty">Faculty:</label>
+      <input type="text" id="faculty" name="faculty"><br><br>
+      <label for="ID">ID of student:</label>
+      <input type="text" id="id" name="id"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  
+      <!-- script to convert method to JSON -->
+      <script>
+        function submission() {
+            // Get data from the form in pervious step
+            const fname = document.getElementById("fname").value;
+            const lname = document.getElementById("lname").value;
+            const age = document.getElementById("age").value;
+            const faculty = document.getElementById("faculty").value;
+            const id = document.getElementById("id").value;
+
+            // Create a JSON object with the form data
+            const formData = {
+                fname: fname,
+                lname: lname,
+                age: age,
+                faculty: faculty,
+                id: id
+            }; 
+            // Convert the JSON object to a JSON string
+            const json = JSON.stringify(formData);
+        }
+       </script>
+  
+        <!-- video embed functionality -->
+        <h1>Cute video of cats compilation #1</h1>
+        <div style="padding-bottom: 56.25%; max-width: 100%; position: relative;">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?loop=1" width="640" height="360" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" frameborder="0">
+            </iframe>
+        </div>
+  
+        <!-- geolocation tracking functionality -->
+        <script>
+        var x = document.getElementById("demo");
+            function getLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+              }
+            }
+        
+            function showPosition(position) {
+              x.innerHTML = "Latitude: " + position.coords.latitude +
+              "<br>Longitude: " + position.coords.longitude;
+            }
+        </script> 
+</body>
+</html>
+
+        
